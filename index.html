@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Portfólio Profissional</title>
-<style>
 
+<style>
 /* ===== RESET BÁSICO ===== */
 
 body{
@@ -75,6 +75,8 @@ h2{
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:25px;
 }
+
+/* ===== FOOTER ===== */
 
 .footer-pro{
     background:#0f172a;
@@ -153,14 +155,10 @@ h2{
     transition:0.25s ease;
 }
 
-/* HOVER = único efeito */
-
 .btn:hover{
     transform:translateY(-3px);
     box-shadow:0 8px 20px rgba(0,0,0,0.25);
 }
-
-/* Remove estados padrão navegador */
 
 .btn:visited,
 .btn:active,
@@ -170,11 +168,10 @@ h2{
     outline:none;
 }
 
-/* REMOVE HIGHLIGHT DO NAVEGADOR */
-
 a{
     -webkit-tap-highlight-color:transparent;
 }
+
 /* ===== HERO PROFISSIONAL ===== */
 
 .hero{
@@ -204,13 +201,13 @@ a{
     line-height:1.7;
     opacity:0.85;
 }
+
 /* ===== CASES CORPORATIVOS ===== */
 
 .case{
     background:#fff;
     border-radius:16px;
     padding:40px;
-    margin-bottom:50px;
     box-shadow:0 15px 35px rgba(0,0,0,0.08);
     transition:0.3s;
 }
@@ -239,7 +236,7 @@ a{
 }
 
 .case-block p{
-    margin:0;
+    margin:0 0 14px;
     line-height:1.7;
 }
 
@@ -252,9 +249,169 @@ a{
     margin-bottom:6px;
 }
 
-</style>
+/* ===== CARROSSEL DE CASES ===== */
 
+.carousel{
+    max-width:1100px;
+    margin:auto;
+}
+
+.carousel-stage{
+    display:grid;
+    grid-template-columns:56px minmax(0, 1fr) 56px;
+    gap:20px;
+    align-items:center;
+}
+
+.carousel-viewport{
+    overflow:hidden;
+    width:100%;
+    border-radius:16px;
+}
+
+.carousel-track{
+    display:flex;
+    transition:transform .45s ease;
+    will-change:transform;
+}
+
+.carousel-track > .case{
+    flex:0 0 100%;
+    width:100%;
+    margin:0;
+    box-sizing:border-box;
+}
+
+.carousel-button{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    font-size:26px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+    padding:0;
+    transition:0.25s ease;
+    box-shadow:0 8px 18px rgba(37,99,235,0.25);
+}
+
+.carousel-button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(37,99,235,0.35);
+}
+
+.carousel-button:focus{
+    outline:3px solid rgba(37,99,235,0.25);
+    outline-offset:4px;
+}
+
+.carousel-button span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+    transform:translateY(-1px);
+}
+
+.carousel-footer{
+    text-align:center;
+    padding:22px 0 5px;
+}
+
+.carousel-indicators{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border:none;
+    border-radius:50%;
+    background:#cbd5e1;
+    cursor:pointer;
+    padding:0;
+    transition:0.25s ease;
+}
+
+.dot.active{
+    background:#2563eb;
+    transform:scale(1.18);
+}
+
+.carousel-counter{
+    font-weight:600;
+    color:#0f172a;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero .subtitle{
+        font-size:18px;
+    }
+
+    .hero .description{
+        font-size:16px;
+    }
+
+    .carousel-stage{
+        grid-template-columns:44px minmax(0, 1fr) 44px;
+        gap:10px;
+    }
+
+    .carousel-button{
+        width:42px;
+        height:42px;
+        font-size:22px;
+    }
+
+    .case{
+        padding:28px;
+    }
+
+    .case h3{
+        font-size:22px;
+    }
+}
+
+@media(max-width:480px){
+    section{
+        padding:0 14px;
+    }
+
+    .carousel-stage{
+        grid-template-columns:38px minmax(0, 1fr) 38px;
+        gap:6px;
+    }
+
+    .carousel-button{
+        width:36px;
+        height:36px;
+        font-size:20px;
+    }
+
+    .case{
+        padding:24px;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <header class="hero">
@@ -298,6 +455,7 @@ Não entrego apenas ferramentas ou planilhas: entrego soluções estruturadas qu
 </div>
 </section>
 
+
 <section>
 <h2>Serviços</h2>
 <div class="grid">
@@ -310,120 +468,43 @@ Através do mapeamento e padronização das atividades, ajudo empresas a reduzir
 </div>
 </section>
 
+
 <section class="highlight">
   <p>
     Atuação prática em projetos reais de melhoria de processos, automação operacional e implantação de soluções que reduziram retrabalho, aumentaram a eficiência e trouxeram maior controle para operações empresariais.
   </p>
 </section>
 
+
 <section>
 <h2>Cases</h2>
-<div class="case">
-  <h3>Como organizei e padronizei um processo crítico de cadastro de terceiros, eliminando retrabalho e aumentando a clareza operacional</h3>
-  <div class="case-block">
-    <h4>Desafio</h4>
-    <p>
-      Um setor administrativo possuía atividades realizadas de forma desorganizada, sem padronização e sem clareza das etapas do processo.<br>
-Isso gerava retrabalho, dúvidas operacionais e perda de tempo na execução das rotinas.
-    </p>
-  </div>
-  <div class="case-block">
-    <h4>Solução</h4>
-    <p>
-      Foi realizado no Bizagi o mapeamento completo do processo, identificando todas as etapas, responsáveis e pontos de melhoria.</p>
-<br>
 
-<p>O trabalho incluiu:</p>
-<ul>
-<li>Levantamento das atividades existentes</li>
-<li>Estruturação do fluxo operacional</li>
-<li>Criação de fluxograma visual do processo</li>
-<li>Identificação de gargalos e retrabalhos</li>
-<li>Organização lógica das etapas de execução</li>
-</ul>
+<div class="carousel" id="casesCarousel">
+
+  <div class="carousel-stage">
+
+    <button class="carousel-button prev" type="button" aria-label="Case anterior">
+      <span>&#10094;</span>
+    </button>
+
+    <div class="carousel-viewport">
+      <div class="carousel-track"></div>
+    </div>
+
+    <button class="carousel-button next" type="button" aria-label="Próximo case">
+      <span>&#10095;</span>
+    </button>
 
   </div>
-  <div class="case-block">
-    <h4>Resultados</h4>
-    <ul>
-<li>Maior clareza das responsabilidades do processo</li>
-<li>Redução de dúvidas operacionais</li>
-<li>Padronização das rotinas administrativas</li>
-<li>Melhoria na organização do fluxo de trabalho</li>
-<li>Facilidade para treinamento de novos colaboradores</li>
-</ul>
 
-  </div>
-</div>
-
-
-<div class="case">
-
-  <h3>Como automatizei a criação de orçamentos complexos, reduzindo tempo operacional e eliminando erros manuais</h3>
-
-  <div class="case-block">
-    <h4>Desafio</h4>
-    <p>
-      Um cliente precisava organizar o controle financeiro de sua rotina, pois realizava todos os registros manualmente e enfrentava dificuldades para acompanhar gastos, entradas e saldo mensal.
-    </p>
-  </div>
-
-  <div class="case-block">
-    <h4>Solução</h4>
-    <p>
-      Criada planilha Excel e criada mala direta com Word com cálculos automáticos e geração instantânea de documentos.
-    </p>
-  </div>
-
-  <div class="case-block">
-    <h4>Resultados</h4>
-    <ul>
-      <li>Maior organização financeira</li>
-      <li>Redução de erros manuais</li>
-      <li>Facilidade de acompanhamento mensal</li>
-      <li>Melhor controle de gastos</li>
-      <li>Otimização do tempo de registro</li>
-    </ul>
+  <div class="carousel-footer">
+    <div class="carousel-indicators" aria-label="Indicadores dos cases"></div>
+    <div class="carousel-counter"></div>
   </div>
 
 </div>
-
-
-<div class="case">
-
-  <h3>Transformação completa do processo de aprovação de investimentos: da desorganização manual a um sistema automatizado e rastreável</h3>
-
-  <div class="case-block">
-    <h4>Desafio</h4>
-    <p>
-      O processo de aprovação de Projetos de Investimento era realizado em um sistema defasado, com fluxo lento e ineficiente. Qualquer reprovação reiniciava toda a aprovação do zero, gerando atrasos significativos.
-      <br><br>
-      O acompanhamento era feito em planilhas compartilhadas e desorganizadas, resultando em falta de rastreabilidade, erros humanos e baixa confiabilidade das informações.
-    </p>
-  </div>
-
-  <div class="case-block">
-    <h4>Solução</h4>
-    <p>
-      Realizei o mapeamento completo do processo e liderei a criação de um novo sistema junto a desenvolvedores terceiros, atuando tanto na gestão do projeto quanto na definição funcional e técnica. O sistema foi projetado para centralizar toda a jornada do Projeto de investimento, automatizar cálculos, estruturar fluxos de aprovação por alçada e garantir rastreabilidade em tempo real. A entrega para testes ocorreu 2 semanas, antes do prazo estimado.
-    </p>
-  </div>
-
-  <div class="case-block">
-    <h4>Resultados</h4>
-    <ul>
-      <li>Redução significativa do tempo de aprovação dos Projetos de investimentos</li>
-      <li>Eliminação de retrabalho causado por reprovações</li>
-      <li>Centralização total das informações em um único sistema</li>
-      <li>Aumento da rastreabilidade e confiabilidade dos dados</li>
-      <li>Automatização de cálculos e controles financeiros</li>
-      <li>Maior governança e transparência no processo decisório</li>
-    </ul>
-  </div>
-
-</div>
-
 </section>
+
 
 <section class="cta">
   <h2>Vamos conversar sobre seu projeto?</h2>
@@ -489,6 +570,555 @@ Isso gerava retrabalho, dúvidas operacionais e perda de tempo na execução das
 </footer>
 
 
-</body>
+<script>
+/* =========================================================
+   ÁREA DOS CASES
 
+   Para adicionar um novo case:
+   1. Copie um bloco inteiro de case.
+   2. Cole abaixo do último case.
+   3. Coloque uma vírgula entre um case e outro.
+   4. Mantenha todos os cases dentro do const cases = [ ... ];
+   5. Não precisa mexer no carrossel, nas bolinhas ou no contador.
+========================================================= */
+
+const cases = [
+  /* ===================== CASE 1 ===================== */
+  {
+    title: "Como organizei e padronizei um processo crítico de cadastro de terceiros, eliminando retrabalho e aumentando a clareza operacional",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "Um setor administrativo possuía atividades realizadas de forma desorganizada, sem padronização e sem clareza das etapas do processo.",
+          "Isso gerava retrabalho, dúvidas operacionais e perda de tempo na execução das rotinas."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Foi realizado no Bizagi o mapeamento completo do processo, identificando todas as etapas, responsáveis e pontos de melhoria.",
+          "O trabalho incluiu:"
+        ],
+        list: [
+          "Levantamento das atividades existentes",
+          "Estruturação do fluxo operacional",
+          "Criação de fluxograma visual do processo",
+          "Identificação de gargalos e retrabalhos",
+          "Organização lógica das etapas de execução"
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Maior clareza das responsabilidades do processo",
+          "Redução de dúvidas operacionais",
+          "Padronização das rotinas administrativas",
+          "Melhoria na organização do fluxo de trabalho",
+          "Facilidade para treinamento de novos colaboradores"
+        ]
+      }
+    ]
+  },
+
+  /* ===================== CASE 2 ===================== */
+  {
+    title: "Como automatizei a criação de orçamentos complexos, reduzindo tempo operacional e eliminando erros manuais",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "A elaboração de orçamentos era um processo totalmente manual, exigindo o preenchimento repetitivo de informações e diversos cálculos, o que aumentava o tempo de execução e a probabilidade de erros. Além disso, a geração dos documentos demandava retrabalho sempre que havia alterações nos dados, reduzindo a produtividade e a confiabilidade do processo."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de uma solução em Excel integrada ao Microsoft Word por meio de mala direta, automatizando os cálculos, o preenchimento das informações e a geração instantânea de orçamentos padronizados. A solução eliminou tarefas repetitivas, reduziu intervenções manuais e tornou o processo de criação de documentos mais rápido, confiável e escalável."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Redução significativa do tempo de elaboração de orçamentos",
+          "Eliminação de erros decorrentes de cálculos e preenchimentos manuais",
+          "Padronização dos documentos gerados",
+          "Maior produtividade na criação de orçamentos",
+          "Facilidade para atualização de informações e emissão de novos documentos"
+        ]
+      }
+    ]
+  },
+
+  /* ===================== CASE 3 ===================== */
+  {
+    title: "Transformação completa do processo de aprovação de investimentos: da desorganização manual a um sistema automatizado e rastreável",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de aprovação de Projetos de Investimento era realizado em um sistema defasado, com fluxo lento e ineficiente. Qualquer reprovação reiniciava toda a aprovação do zero, gerando atrasos significativos.",
+          "O acompanhamento era feito em planilhas compartilhadas e desorganizadas, resultando em falta de rastreabilidade, erros humanos e baixa confiabilidade das informações."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Realizei o mapeamento completo do processo e liderei a criação de um novo sistema junto a desenvolvedores terceiros, atuando tanto na gestão do projeto quanto na definição funcional e técnica. O sistema foi projetado para centralizar toda a jornada do Projeto de investimento, automatizar cálculos, estruturar fluxos de aprovação por alçada e garantir rastreabilidade em tempo real. A entrega para testes ocorreu 2 semanas, antes do prazo estimado."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Redução significativa do tempo de aprovação dos Projetos de investimentos",
+          "Eliminação de retrabalho causado por reprovações",
+          "Centralização total das informações em um único sistema",
+          "Aumento da rastreabilidade e confiabilidade dos dados",
+          "Automatização de cálculos e controles financeiros",
+          "Maior governança e transparência no processo decisório"
+        ]
+      }
+    ]
+  },
+
+  /* ===================== CASE 4 ===================== */
+  {
+    title: "Como automatizei o processo de recebimento de materiais indiretos de uma empresa multinacional",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O controle das solicitações e retiradas de materiais do almoxarifado era realizado de forma manual, tornando o processo suscetível a erros e dificultando a rastreabilidade das movimentações. Não havia um registro padronizado que permitisse identificar o responsável pela retirada, o setor de destino ou o histórico de consumo dos materiais, reduzindo a confiabilidade das informações para gestão do estoque."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de um processo digital no sistema Way-V, integrado a um formulário para registro das solicitações e movimentações de materiais. A solução estruturou o fluxo entre os setores envolvidos, automatizou notificações e atualizações de status em cada etapa do processo e passou a registrar informações essenciais, como data, horário, usuário responsável, setor solicitante, materiais retirados e demais dados necessários para garantir a rastreabilidade e o controle das movimentações."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Rastreabilidade completa das solicitações e retiradas de materiais",
+          "Padronização do processo de controle de movimentações",
+          "Redução de erros provenientes de registros manuais",
+          "Maior confiabilidade das informações para gestão do estoque",
+          "Facilidade no acompanhamento das solicitações e do consumo de materiais",
+          "Otimização do tempo dedicado ao registro e controle das movimentações"
+        ]
+      }
+    ]
+  },
+
+  /* ===================== CASE 5 ===================== */
+
+  {
+    title: "Criação e automação de processo de controle de incidentes em fábrica de produção",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de registro e acompanhamento de acidentes era descentralizado e pouco padronizado, dificultando a documentação das ocorrências, o acompanhamento das ações corretivas e a rastreabilidade das informações. A ausência de um fluxo estruturado comprometia a comunicação entre os responsáveis, o cumprimento de prazos e o histórico das tratativas necessárias para prevenção de novos acidentes."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de um processo digital no sistema Way-V, integrado a um formulário inteligente para registro completo de acidentes. A solução permitiu anexar evidências fotográficas do local e da ocorrência, classificar automaticamente o nível de urgência conforme o tipo de acidente, definir prazos para implementação das ações corretivas e automatizar o fluxo de notificações, assinaturas e aprovações dos responsáveis pela área de Segurança do Trabalho. Além disso, todas as etapas passaram a ser registradas, mantendo um histórico completo das alterações realizadas, com identificação de data, horário, usuário responsável e demais informações relevantes para auditoria e rastreabilidade."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Padronização do processo de registro e tratamento de acidentes",
+          "Centralização das informações e evidências das ocorrências",
+          "Maior rastreabilidade das ações, aprovações e responsáveis",
+          "Agilidade na comunicação entre os envolvidos por meio de automações",
+          "Melhor controle dos prazos para implementação de ações corretivas",
+          "Histórico completo das movimentações, garantindo transparência e suporte a auditorias",
+          "Fortalecimento das ações de prevenção e melhoria contínua em Segurança do Trabalho"
+        ]
+      }
+    ]
+  },
+
+ /* ===================== CASE 6 ===================== */
+
+  {
+    title: "Criação e automação - processo de entrada e saída de veículos",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de recebimento e descarga de materiais apresentava baixa visibilidade operacional, dificultando o acompanhamento da jornada dos veículos dentro da empresa. A ausência de um controle centralizado comprometia a rastreabilidade das etapas, o monitoramento do tempo de permanência dos caminhões, a identificação de gargalos entre os setores e o controle das responsabilidades de cada equipe envolvida no processo."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Reestruturação do processo de controle da portaria no sistema Way-V, com aprimoramento do formulário existente e desenvolvimento de automações para gerenciar todo o fluxo de entrada, descarga e liberação dos veículos. A solução integrou os setores participantes do processo, automatizou atualizações de status, notificações e encaminhamentos entre as etapas operacionais, além de registrar informações como placa do veículo, evidências fotográficas, assinatura do vigilante responsável, horários de entrada e saída e histórico completo das movimentações. Também foi desenvolvido um painel gerencial com atualização em tempo real, permitindo acompanhar a localização de cada veículo no fluxo operacional, visualizar o tempo de permanência em cada etapa, monitorar os indicadores de SLA por setor, identificar rapidamente veículos com maior tempo de espera por meio de indicadores visuais e apoiar a tomada de decisão para reduzir gargalos e otimizar o processo logístico."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Rastreabilidade completa da jornada dos veículos desde a entrada até a liberação",
+          "Monitoramento em tempo real do status de cada etapa do processo",
+          "Controle do tempo de permanência dos veículos e dos SLAs por setor",
+          "Identificação rápida de gargalos operacionais por meio de painel gerencial",
+          "Automatização das notificações e transições entre os setores envolvidos",
+          "Maior controle das responsabilidades por turno, com registro de assinaturas e histórico das movimentações",
+          "Centralização das evidências do processo, incluindo registros fotográficos e documentação das cargas",
+          "Aumento da eficiência operacional e maior agilidade no processo de recebimento e descarga de materiais"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 7 ===================== */
+
+  {
+    title: "Projeto de melhoria de atendimento e pesquisa de satisfação para setor de TI e seus chamados",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de atendimento do setor de Tecnologia da Informação apresentava oportunidades de melhoria na comunicação com os usuários, na coleta de feedback sobre os atendimentos e no acompanhamento dos indicadores de satisfação. A baixa adesão às pesquisas dificultava a identificação de oportunidades de melhoria, enquanto diversas comunicações operacionais ainda dependiam de interações manuais dos analistas."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de automações na plataforma de gerenciamento de chamados para otimizar a comunicação com os usuários e fortalecer o processo de melhoria contínua. A solução automatizou o envio de lembretes para preenchimento das pesquisas de satisfação, aumentando o engajamento dos clientes após a conclusão dos atendimentos. Também foi implementada uma automação para que, sempre que um analista assumisse um chamado, o sistema enviasse automaticamente uma comunicação ao solicitante contendo a identificação do responsável pelo atendimento e as informações iniciais do chamado, eliminando a necessidade de interações manuais da equipe. Complementando a solução, foi desenvolvido um painel gerencial em Power BI para consolidar indicadores dos chamados e das pesquisas de satisfação, segmentando os atendimentos por categorias e monitorando as avaliações dos usuários. Além disso, avaliações negativas passaram a gerar notificações automáticas em tempo real para o gestor da área, possibilitando ações corretivas imediatas e acompanhamento contínuo da qualidade dos serviços prestados."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Automatização da comunicação entre a equipe de TI e os usuários",
+          "Aumento da eficiência operacional, reduzindo atividades manuais dos analistas",
+          "Maior adesão às pesquisas de satisfação dos atendimentos",
+          "Monitoramento centralizado dos indicadores de chamados e satisfação por meio do Power BI",
+          "Notificações em tempo real para tratamento imediato de avaliações negativas",
+          "Maior visibilidade sobre a qualidade dos atendimentos e as categorias de chamados",
+          "Suporte à tomada de decisão baseada em indicadores e feedback dos usuários",
+          "Fortalecimento da cultura de melhoria contínua na área de Tecnologia da Informação"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 8 ===================== */
+
+  {
+    title: "Digitalização do processo de inspeção termográfica para manutenção preditiva.",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de registro das inspeções de termografia era descentralizado e dificultava o acompanhamento das rotas, a identificação de equipamentos com temperaturas fora dos padrões e a consolidação das informações para análise. A ausência de indicadores centralizados comprometia o monitoramento das inspeções e a tomada de decisão preventiva pela equipe de manutenção."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de um processo digital completo no sistema Way-V para gerenciamento das rotas de termografia. Foram criados formulários específicos para cada setor da empresa, permitindo o registro padronizado de todas as inspeções realizadas em cada ponto da rota. A solução também incorporou regras de validação para destacar automaticamente medições que ultrapassassem os limites estabelecidos, sinalizando situações de atenção aos responsáveis. Todos os dados coletados passaram a ser integrados ao Power BI, possibilitando a consolidação das informações em dashboards gerenciais para acompanhamento das rotas, análise crítica dos resultados, monitoramento do histórico das inspeções e suporte às decisões de manutenção preditiva."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Padronização do processo de inspeção por termografia",
+          "Maior confiabilidade no registro das medições realizadas",
+          "Identificação automática de equipamentos com temperaturas fora dos limites estabelecidos",
+          "Centralização das informações em dashboards gerenciais no Power BI",
+          "Acompanhamento do histórico de inspeções e desempenho dos equipamentos",
+          "Agilidade na identificação de desvios e priorização das ações de manutenção",
+          "Maior suporte à manutenção preditiva e à tomada de decisão baseada em dados"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 9 ===================== */
+
+  {
+    title: "Como digitalizei o controle de sucatas e retrabalhos em toda a operação industrial",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O controle de sucatas e retrabalhos era realizado de forma descentralizada entre diferentes setores da produção, dificultando a padronização dos registros, a rastreabilidade das ocorrências e a consolidação das informações para análise gerencial. A ausência de uma visão integrada comprometia a identificação das principais causas de perdas e a tomada de decisões voltadas à melhoria contínua dos processos produtivos."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvimento de um processo digital no sistema Way-V para padronizar o apontamento de sucatas e retrabalhos em diversos setores da fábrica, incluindo Produção, Estamparia, Qualidade, Esmaltação, Pintura, Serigrafia, Sistema a Gás e demais áreas envolvidas. Foram criados formulários específicos para cada setor, permitindo o registro detalhado das ocorrências, incluindo materiais, produtos, peças e lotes afetados, além das informações necessárias para garantir a rastreabilidade completa de cada apontamento. Todos os registros passaram a ser integrados ao Power BI, onde foram desenvolvidos dashboards gerenciais com indicadores individuais por setor e uma visão consolidada de toda a operação. O painel permitiu acompanhar volumes de sucata e retrabalho, identificar tendências, comparar o desempenho entre áreas e fornecer uma visão centralizada dos indicadores produtivos, funcionando como um sistema integrado de monitoramento operacional."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Padronização do processo de apontamento de sucatas e retrabalhos",
+          "Rastreabilidade completa das ocorrências em todos os setores envolvidos",
+          "Centralização das informações em dashboards gerenciais no Power BI",
+          "Visão consolidada dos indicadores de perdas industriais em toda a operação",
+          "Facilidade na identificação de setores, produtos e processos com maior índice de sucata e retrabalho",
+          "Maior suporte à tomada de decisão baseada em indicadores",
+          "Fortalecimento das iniciativas de melhoria contínua e redução de perdas produtivas"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 10 ===================== */
+
+  {
+    title: "Como redesenhei um processo fiscal complexo para aumentar a rastreabilidade e a eficiência operacional",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de lançamento de notas fiscais era conduzido de forma predominantemente manual e envolvia diversos setores, responsáveis e etapas de validação. A falta de padronização dificultava o acompanhamento das pendências, comprometia a rastreabilidade das notas e tornava o controle dos responsáveis e dos prazos um desafio operacional. Além disso, o fluxo possuía diversas exceções e retornos para ajustes, tornando o processo complexo e suscetível a atrasos e falhas de comunicação."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "O projeto iniciou com o mapeamento detalhado do processo existente, permitindo identificar oportunidades de melhoria e redesenhar o fluxo em conjunto com os responsáveis de cada área envolvida. A partir desse levantamento, foi desenvolvido um processo digital completo no sistema Way-V, estruturando todas as etapas do lançamento de notas fiscais em um único ambiente integrado. Foram implementadas automações para preenchimento inteligente de informações, alteração automática de status, definição dinâmica de responsáveis, fluxo de aprovações, notificações entre setores e registros detalhados para garantir a rastreabilidade de cada nota durante todo o processo. Após a validação com todas as áreas participantes, foi conduzida a transição do processo manual para o ambiente digital. Durante o período de implantação, o sistema recebeu melhorias contínuas com base no feedback dos usuários, assegurando maior aderência às necessidades operacionais e facilitando a adaptação dos colaboradores ao novo modelo de trabalho. Como complemento à solução, foi desenvolvido um painel gerencial com atualização em tempo real, permitindo acompanhar o andamento de todas as notas fiscais, identificar responsáveis, visualizar tempos de permanência em cada etapa, monitorar pendências e fornecer total transparência sobre o fluxo operacional."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Mapeamento e padronização completa do processo de lançamento de notas fiscais",
+          "Digitalização integral do fluxo, substituindo controles manuais",
+          "Automatização das regras de negócio, aprovações, notificações e alterações de status",
+	  "Rastreabilidade completa de todas as notas fiscais durante o processo",
+	  "Maior transparência sobre responsabilidades, pendências e andamento das atividades",
+	  "Monitoramento em tempo real por meio de painel gerencial integrado",
+          "Redução de falhas operacionais e melhoria da comunicação entre os setores envolvidos",
+	  "Implantação bem-sucedida do novo processo com acompanhamento contínuo e evolução baseada no feedback dos usuários"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 11 ===================== */
+
+  {
+    title: "Como implementei um sistema de monitoramento da qualidade em tempo real e conduzi sua integração com um MES",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O monitoramento da qualidade nas linhas de produção não permitia identificar rapidamente lotes com defeitos, aumentando o risco de produtos não conformes seguirem para expedição e gerarem retrabalhos."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Desenvolvi um processo digital no Way-V para apontamento de não conformidades em tempo real, permitindo rastrear lotes potencialmente afetados e apoiar bloqueios preventivos. Posteriormente, conduzi a integração da solução com o sistema Mify, participando da gestão do projeto, homologações, reuniões técnicas e implantação de um ambiente com características de um MES."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Identificação rápida de lotes críticos",
+          "Monitoramento em tempo real da qualidade",
+          "Integração entre Way-V e Mify",
+	  "Dashboards gerenciais para tomada de decisão",
+	  "Redução do tempo de resposta às ocorrências"
+        ]
+      }
+    ]
+  },
+
+/* ===================== CASE 12 ===================== */
+
+  {
+    title: "Como implementei um painel em tempo real para controle fiscal e análise de SLA",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "O processo de lançamento de notas fiscais envolvia diversos setores e dificultava o acompanhamento do fluxo operacional, tornando a análise de SLAs, tempos de espera e identificação de gargalos um processo manual e pouco eficiente para a gestão."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Atuei na gestão do projeto de desenvolvimento de um painel gerencial em tempo real, voltado ao setor de Suprimentos, consolidando informações de todo o fluxo fiscal. A solução permitiu acompanhar o andamento das notas fiscais, identificar os responsáveis por cada etapa, monitorar o tempo de permanência em cada setor e analisar os indicadores de SLA por meio de dashboards interativos, facilitando o acompanhamento operacional e a tomada de decisão."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Monitoramento em tempo real de todo o fluxo fiscal",
+          "Visibilidade dos tempos de espera e SLAs por setor",
+          "Identificação rápida de gargalos operacionais",
+	  "Centralização dos indicadores em dashboards gerenciais",
+          "Maior suporte à tomada de decisão baseada em dados",
+          "Aumento da transparência e do controle sobre o processo"
+        ]
+      }
+    ]
+  }
+
+/* ===================== CASE 12 =====================
+
+  {
+    title: "Título do novo case",
+    blocks: [
+      {
+        heading: "Desafio",
+        paragraphs: [
+          "Texto do desafio."
+        ]
+      },
+      {
+        heading: "Solução",
+        paragraphs: [
+          "Texto da solução."
+        ]
+      },
+      {
+        heading: "Resultados",
+        list: [
+          "Resultado 1",
+          "Resultado 2",
+          "Resultado 3"
+        ]
+      }
+    ]
+  }
+
+*/
+
+
+];
+
+/* =========================================================
+   LÓGICA DO CARROSSEL
+   Não precisa mexer daqui para baixo para adicionar cases.
+========================================================= */
+
+const carousel = document.querySelector("#casesCarousel");
+const track = carousel.querySelector(".carousel-track");
+const prevButton = carousel.querySelector(".prev");
+const nextButton = carousel.querySelector(".next");
+const indicators = carousel.querySelector(".carousel-indicators");
+const counter = carousel.querySelector(".carousel-counter");
+
+let currentCaseIndex = 0;
+
+function escapeHTML(value){
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function createParagraphs(paragraphs = []){
+  return paragraphs
+    .map(paragraph => `<p>${escapeHTML(paragraph)}</p>`)
+    .join("");
+}
+
+function createList(items = []){
+  if(!items.length){
+    return "";
+  }
+
+  return `
+    <ul>
+      ${items.map(item => `<li>${escapeHTML(item)}</li>`).join("")}
+    </ul>
+  `;
+}
+
+function createCaseBlock(block){
+  return `
+    <div class="case-block">
+      <h4>${escapeHTML(block.heading)}</h4>
+      ${createParagraphs(block.paragraphs)}
+      ${createList(block.list)}
+    </div>
+  `;
+}
+
+function createCaseSlide(caseItem){
+  return `
+    <article class="case">
+      <h3>${escapeHTML(caseItem.title)}</h3>
+      ${caseItem.blocks.map(createCaseBlock).join("")}
+    </article>
+  `;
+}
+
+function renderCases(){
+  track.innerHTML = cases.map(createCaseSlide).join("");
+}
+
+function renderIndicators(){
+  indicators.innerHTML = "";
+
+  cases.forEach((caseItem, index) => {
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "dot";
+    dot.setAttribute("aria-label", `Ir para o case ${index + 1}: ${caseItem.title}`);
+
+    dot.addEventListener("click", () => {
+      goToCase(index);
+    });
+
+    indicators.appendChild(dot);
+  });
+}
+
+function updateCarousel(){
+  track.style.transform = `translateX(-${currentCaseIndex * 100}%)`;
+
+  const dots = indicators.querySelectorAll(".dot");
+
+  dots.forEach((dot, index) => {
+    const isActive = index === currentCaseIndex;
+
+    dot.classList.toggle("active", isActive);
+    dot.setAttribute("aria-current", isActive ? "true" : "false");
+  });
+
+  counter.textContent = `Case ${currentCaseIndex + 1} de ${cases.length}`;
+}
+
+function goToCase(index){
+  currentCaseIndex = index;
+  updateCarousel();
+}
+
+function showNextCase(){
+  currentCaseIndex = (currentCaseIndex + 1) % cases.length;
+  updateCarousel();
+}
+
+function showPreviousCase(){
+  currentCaseIndex = (currentCaseIndex - 1 + cases.length) % cases.length;
+  updateCarousel();
+}
+
+nextButton.addEventListener("click", showNextCase);
+prevButton.addEventListener("click", showPreviousCase);
+
+renderCases();
+renderIndicators();
+updateCarousel();
+</script>
+
+</body>
 </html>
